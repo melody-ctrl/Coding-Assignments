@@ -10,11 +10,12 @@ Finally, I added a requirements.txt file, which is empty in this case, but is us
 
 Here are some screenshots of my process..
 
+![screenshot of meaningful commits](images/meaningful_commits.png)
 ![screenshot of git branch](images/git_branch.png)
 ![screenshot of git push](images/git_push.png)
 ![screenshot of git status](images/git_status.png)
 ![screenshot of compare and pull](images/compare_and_pull.png)
-![screenshot of meaningful commits](images/meaningful_commits.png)
+
 
 ## About me:
 I am a **23 year old** girl from **Nigeria**. I studied **Business Management** at University, but knew I had an interest in tech since I was 18.
