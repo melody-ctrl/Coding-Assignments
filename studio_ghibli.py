@@ -10,10 +10,8 @@ response = requests.get(URL, headers=headers)
 print(response.status_code)  # check the response
 
 data = response.json() # converts text response into a dictionary I can use directly in python.
-print(data.keys())
 
-
-
-# r = data[0]
+movie = data[0]
+print(movie.keys()) # Preview the keys listed for each movie.
 
 # Ask User questions about their day
