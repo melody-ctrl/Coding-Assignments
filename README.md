@@ -28,3 +28,13 @@ The first week of the CFG degree has been good so far. I did have to miss one se
 
 
 Anyways, let the assignment commence. Git is so ~~difficult to grasp~~ fun! God bless whoever created it. 
+
+# Assignment 2 - Using APIs in Python 
+
+This porject will be called: “Which Studio Ghibli Movie Should You Watch?” and will...
+
+* Ask the user a series of questions (mood, genre, pace, etc.)
+* Call the Studio Ghibli API
+* Filter movies based on answers
+* Recommend the best match
+* Save results to a file
