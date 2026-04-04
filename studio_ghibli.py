@@ -1,6 +1,7 @@
 # Get movies from API
 import requests # importing required library to access APIs
 import pprint # makes json prettier to read
+import random # can select random elements 
 
 # API parameters
 URL = "https://ghibliapi.vercel.app/films"
@@ -78,10 +79,22 @@ else:
     print("Invalid choice, defaulting to something magical ✨")
     selected_tag = "mystical"
 
-print(selected_tag)
 
 # list comprehension
 # making list of movies matching the tags the user chose.
 matches = [title for title in ghibli_tags if selected_tag in ghibli_tags[title]]
 print(matches)
 
+# Using import random module. For when there are multiple matches, choose a random one.
+# For a single match, just return it, and for anything else, return a random choice from list of movies.
+
+def choose_movie(matches, ghibli_tags):
+    if len(matches) > 1:
+        return random.choice(matches)
+    elif len(matches) == 1:
+        return matches
+    else:
+        return random.choice(ghibli_tags.keys())
+
+chosen_movie = choose_movie(matches, ghibli_tags)
+print(chosen_movie) 
