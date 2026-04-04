@@ -63,3 +63,25 @@ print("Boring") # adventure
 print("Sad") # family
 
 choice = input("Write your option: ").lower()
+
+if choice == "stressful":
+    selected_tag = "mystical"
+elif choice == "nostalgic":
+    selected_tag = "historical"
+elif choice == "emotional":
+    selected_tag = "romance"
+elif choice == "boring":
+    selected_tag = "adventure"
+elif choice == "sad":
+    selected_tag = "romance"
+else:
+    print("Invalid choice, defaulting to something magical ✨")
+    selected_tag = "mystical"
+
+print(selected_tag)
+
+# list comprehension
+# making list of movies matching the tags the user chose.
+matches = [title for title in ghibli_tags if selected_tag in ghibli_tags[title]]
+print(matches)
+
