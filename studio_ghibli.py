@@ -13,19 +13,40 @@ movies = response.json() # converts text response into a dictionary I can use di
 
 pprint.pprint(movies) # this is a list of dictionaries
 
-print("-----")
+print("-----------------")
 print("EXPLORING THE DATA...")
+print("-----------------")
 
-print(f"The fourth movie in the list is {movies[3]["title"]}") # to access a title that we know the index. We use index as it's a list, then state the dict key we want
+# create list of movie titles 
+movie_list = []
+for movie in movies: 
+    movie_list.append(movie["title"])
 
-# what if we don't know the index of the movie we want?
-# for movie in movies: 
-#     if movie["release_date"] == "2013":
-#         print(movie["title"])
+print(len(movie_list))
 
-# using list comprehension (learnt in week3 day3)
+print(movie_list[:12])
+
+ghibli_tags = {
+    "Castle in the Sky": ["Adventure"],
+    "Grave of the Fireflies": ["Historical"],
+    "My Neighbour Totoro": ["Mystical"],
+    "Kiki's Delivery Service": ["Family"],
+    "Only Yesterday": ["Historical"],
+    "Porco Rosso": ["Historical"],
+    "Pom Poko": ["Mystical"],
+    "Whisper of the Heart": ["Romance"],
+    "Princess Monoke": ["Mystical"],
+    "My Neighbors the Yamadas": ["Family"],
+    "Spirited Away": ["Mystical"],
+    "The Cat Returns": ["Adventure"]
+}
+      
+# what if we don't know the index of the movie we want? Use list comprehension (learnt in week3 day3)
 movies_2013 = ([movie["title"] for movie in movies if movie["release_date"] == "2013"])
 print(movies_2013)
 
+# Tag the movies with keywords based on descriptions 
 
 # Ask User questions about their day
+print("Hi. This program will recommend a Studio Ghibli movie to watch this evening based on your day today. Please answer the following questions.")
+"https://ghibliapi.vercel.app/films"
