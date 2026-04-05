@@ -31,10 +31,32 @@ Anyways, let the assignment commence. Git is so ~~difficult to grasp~~ fun! God 
 
 # Assignment 2 - Using APIs in Python 
 
-This porject will be called: “Which Studio Ghibli Movie Should You Watch?” and will...
+## Project overview 
 
-* Ask the user a series of questions (mood, genre, pace, etc.)
-* Call the Studio Ghibli API
-* Filter movies based on answers
-* Recommend the best match
-* Save results to a file
+This project will be called: “Which Studio Ghibli Movie Should You Watch?”. It is a console application that recommends a Studio Ghibli movie to the user based on how they felt today. 
+
+### Breakdown
+
+* Call the Studio Ghibli API to fetch movie data
+* Ask the user how their day went. Options are provided
+* Filter movies by tagging genres then matching each genre with each mood option
+* Randomly selct a movie if multiple matches are found
+* Display a custom message recommending a movie based on matched genre
+* Save results in a presentable format to a file
+
+### API used
+
+'https://ghibliapi.vercel.app/films'
+
+* This API returns information about all of the Studio Ghibli films.
+* This API does not require an API key. 
+
+### Dependencies 
+
+* requests (makes a GET request)
+* pyfiglet (converts text to ASCII art)
+
+### Improvements 
+
+* Further research into other features that could be implemented to cut down code. Felt like it was too wordy e.g. multiple long 'if..else' statements
+* Consider how this could be done on a larger scale. Had to slice from 22 total movies to 12 to be more time efficient. What if there were 100 movies?

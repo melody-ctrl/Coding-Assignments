@@ -15,8 +15,9 @@ movies = response.json() # converts text response into a dictionary I can use di
 pprint.pprint(movies) # this is a list of dictionaries
 
 print("-----------------")
-print("EXPLORING THE DATA...")
+print("EXPLORING THE DATA...") # just playing around
 print("-----------------")
+
 
 # create list of movie titles 
 movie_list = []
@@ -85,7 +86,6 @@ matches = [title for title in ghibli_tags if selected_tag in ghibli_tags[title]]
 
 # Using import random module. For when there are multiple matches, choose a random one.
 # For a single match, just return it, and for anything else, return a random choice from list of movies.
-
 def choose_movie(matches, ghibli_tags):
     if len(matches) > 1:
         return random.choice(matches)
@@ -95,8 +95,8 @@ def choose_movie(matches, ghibli_tags):
         return random.choice(ghibli_tags.keys())
 
 chosen_movie = choose_movie(matches, ghibli_tags)
-# print(chosen_movie) 
 
+# A function to provide custom messages to user based on their answer.
 def custom_message(selected_tag):
     if selected_tag == "mystical":
         return "You definitely need to escape reality tonight. You should watch "
@@ -109,10 +109,10 @@ def custom_message(selected_tag):
     elif selected_tag == "family":
         return "Tonight, you need comfort and feel-good moments. You should watch "
 
-
 final_message = custom_message(selected_tag)
 print(final_message + chosen_movie)
-    
+
+
 
 
 
