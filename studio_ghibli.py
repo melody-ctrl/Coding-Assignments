@@ -83,7 +83,6 @@ else:
 # list comprehension
 # making list of movies matching the tags the user chose.
 matches = [title for title in ghibli_tags if selected_tag in ghibli_tags[title]]
-print(matches)
 
 # Using import random module. For when there are multiple matches, choose a random one.
 # For a single match, just return it, and for anything else, return a random choice from list of movies.
@@ -92,7 +91,7 @@ def choose_movie(matches, ghibli_tags):
     if len(matches) > 1:
         return random.choice(matches)
     elif len(matches) == 1:
-        return matches
+        return matches[0]
     else:
         return random.choice(ghibli_tags.keys())
 
