@@ -2,6 +2,7 @@
 import requests # importing required library to access APIs
 import pprint # makes json prettier to read
 import random # can select random elements 
+import pyfiglet # text styling module that prints text in ASCII art. Install using pip install
 
 # API parameters
 URL = "https://ghibliapi.vercel.app/films"
@@ -37,6 +38,9 @@ print("-----------------")
 print("TAGGING THE MOVIES...")
 print("-----------------")
 
+title = pyfiglet.figlet_format("Studio Ghibli Movie Picker")
+print(title)
+
 # Tag the movies with keywords based on descriptions 
 ghibli_tags = {
     "Castle in the Sky": ["adventure"],
@@ -54,7 +58,7 @@ ghibli_tags = {
 }
       
 # Ask User questions about their day
-print("Hi. This program will recommend a Studio Ghibli movie to watch tonight based on your day today.")
+print("Welcome! This program will recommend a Studio Ghibli movie to watch tonight based on your day today.")
 print("Tell me how your day went by choosing one of the following options: ")
 
 print("- Stressful") # mystical
@@ -63,7 +67,19 @@ print("- Emotional") # romance
 print("- Boring") # adventure
 print("- Sad") # family
 
-choice = input("Please enter your answer: ").lower()
+
+# Exception handling 
+class InvalidOption(Exception):
+    pass
+
+valid_options = ["stressful", "nostalgic", "emotional", "boring", "sad"]
+
+try: 
+    choice = input("Please enter your answer: ").lower()
+    if choice not in valid_options:
+        raise InvalidOption("Error: Invalid Option Entered")
+except InvalidOption as e: 
+    print(f"{e} : That is not a valid option. Please try again.")
 
 if choice == "stressful":
     selected_tag = "mystical"
@@ -75,9 +91,9 @@ elif choice == "boring":
     selected_tag = "adventure"
 elif choice == "sad":
     selected_tag = "family"
-else:
-    print("Invalid choice, defaulting to something magical")
-    selected_tag = "mystical"
+# else:
+#     print("Invalid choice, defaulting to something magical")
+#     selected_tag = "mystical"
 
 
 # list comprehension
