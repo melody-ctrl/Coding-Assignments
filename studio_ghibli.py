@@ -74,12 +74,18 @@ class InvalidOption(Exception):
 
 valid_options = ["stressful", "nostalgic", "emotional", "boring", "sad"]
 
-try: 
-    choice = input("Please enter your answer: ").lower()
-    if choice not in valid_options:
-        raise InvalidOption("Error: Invalid Option Entered")
-except InvalidOption as e: 
-    print(f"{e} : That is not a valid option. Please try again.")
+while True: # infinite loop so user is prompted to enter until answer is valid.
+    try: 
+        choice = input("Please enter your answer: ").lower()
+        if choice not in valid_options:
+            raise InvalidOption("Error! Invalid Option Entered")
+        
+        break # break out of loop if exception isn't found
+    
+    except InvalidOption as e: 
+        print(f"{e} : That is not a valid option. Please try again.")
+
+
 
 if choice == "stressful":
     selected_tag = "mystical"
