@@ -58,5 +58,5 @@ This project will be called: “Which Studio Ghibli Movie Should You Watch?”. 
 
 ### Future improvements 
 
-* Further research into other features that could be implemented to cut down code. Felt like it was too wordy e.g. multiple long 'if..else' statements
+* Further research into other features that could be implemented to cut down code. Felt like it was too wordy e.g. multiple long 'if..else' statements. In hindsight, my if loop pairing choice with genres in lines 86-95 could've just been a dictionary...
 * Consider how this could be done on a larger scale. Had to slice from 22 total movies to 12 to be more time efficient. What if there were 100 movies?
