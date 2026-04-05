@@ -53,17 +53,16 @@ ghibli_tags = {
 }
       
 # Ask User questions about their day
-print("Hi. This program will recommend a Studio Ghibli movie to watch this evening based on your day today. Please answer the following questions.")
+print("Hi. This program will recommend a Studio Ghibli movie to watch tonight based on your day today.")
+print("Tell me how your day went by choosing one of the following options: ")
 
-print("How was your day?")
+print("- Stressful") # mystical
+print("- Nostalgic") # historical
+print("- Emotional") # romance
+print("- Boring") # adventure
+print("- Sad") # family
 
-print("Stressful") # mystical
-print("Nostalgic") # historical
-print("Emotional") # romance
-print("Boring") # adventure
-print("Sad") # family
-
-choice = input("Write your option: ").lower()
+choice = input("Please enter your answer: ").lower()
 
 if choice == "stressful":
     selected_tag = "mystical"
@@ -74,9 +73,9 @@ elif choice == "emotional":
 elif choice == "boring":
     selected_tag = "adventure"
 elif choice == "sad":
-    selected_tag = "romance"
+    selected_tag = "family"
 else:
-    print("Invalid choice, defaulting to something magical ✨")
+    print("Invalid choice, defaulting to something magical")
     selected_tag = "mystical"
 
 
@@ -96,4 +95,24 @@ def choose_movie(matches, ghibli_tags):
         return random.choice(ghibli_tags.keys())
 
 chosen_movie = choose_movie(matches, ghibli_tags)
-print(chosen_movie) 
+# print(chosen_movie) 
+
+def custom_message(selected_tag):
+    if selected_tag == "mystical":
+        return "You definitely need to escape reality tonight. You should watch "
+    elif selected_tag == "historical":
+        return "It seems like you could do with a blast from the past. You should watch "
+    elif selected_tag == "romance":
+        return "You need something heartfelt and romantic. You should watch "
+    elif selected_tag == "adventure":
+        return "You probably need to go on an exciting adventure. You should watch "
+    elif selected_tag == "family":
+        return "Tonight, you need comfort and feel-good moments. You should watch "
+
+
+final_message = custom_message(selected_tag)
+print(final_message + chosen_movie)
+    
+
+
+
