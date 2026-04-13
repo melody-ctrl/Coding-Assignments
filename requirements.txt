@@ -1,0 +1,4 @@
+idna==3.11
+pyfiglet==1.0.4
+requests==2.33.1
+urllib3==2.6.3
