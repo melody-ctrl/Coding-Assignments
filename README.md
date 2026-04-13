@@ -24,7 +24,7 @@ The first week of the CFG degree has been good so far. I did have to miss one se
 - have abs
 - be ready to start a career in software engineering
 
-![picture of five cookies stacked, with two half bitten]<img src="images/cookie1.jpg" alt="cookies" width="100" height="150">
+<img src="images/cookie1.jpg" alt="cookies" width="200" height="250">
 
 
 Anyways, let the assignment commence. Git is so ~~difficult to grasp~~ fun! God bless whoever created it. 
