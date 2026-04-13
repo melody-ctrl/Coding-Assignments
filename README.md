@@ -24,7 +24,7 @@ The first week of the CFG degree has been good so far. I did have to miss one se
 - have abs
 - be ready to start a career in software engineering
 
-![picture of five cookies stacked, with two half bitten](images/cookie1.jpg)
+![picture of five cookies stacked, with two half bitten]<img src="images/cookie1.jpg" alt="cookies" width="100" height="150">
 
 
 Anyways, let the assignment commence. Git is so ~~difficult to grasp~~ fun! God bless whoever created it. 
@@ -60,3 +60,12 @@ This project will be called: “Which Studio Ghibli Movie Should You Watch?”. 
 
 * Further research into other features that could be implemented to cut down code. Felt like it was too wordy e.g. multiple long 'if..else' statements. In hindsight, my if loop pairing choice with genres in lines 86-95 could've just been a dictionary...
 * Consider how this could be done on a larger scale. Had to slice from 22 total movies to 12 to be more time efficient. What if there were 100 movies?
+
+
+# Assignment 3 - Data and MYSQL 
+
+## Project Overview
+
+This project will be called "The Hairstylist Booking platform". It is an SQL database that can be used for a booking page where customers book hair services with a local stylist. It includes tables for stylists, customers, services, and bookings, and shows how they are connected. 
+
+This scenario is for a centralised booking platform for black hairstylists in particular. Currently, many present their businesses informally on social media platforms, making it difficult for a customer to search and filter for stylists based on important things like price, location, and services offered. A centralised page and database with all this information would help to solve this problem. 
