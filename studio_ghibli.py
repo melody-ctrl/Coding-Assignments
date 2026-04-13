@@ -104,8 +104,7 @@ def choose_movie(matches, ghibli_tags):
         return random.choice(matches)
     elif len(matches) == 1:
         return matches[0]
-    else:
-        return random.choice(ghibli_tags.keys())
+
 
 chosen_movie = choose_movie(matches, ghibli_tags)
 
