@@ -1,8 +1,21 @@
 USE HairstylistBooking;
 
 -- Specific scenario: 
--- Customer wants to book an appointment. They want to see which stylists do a specific style
--- Out of the stylists that do this style, they need one that is available on their day off (specific day)
+-- Customer wants to find stylists who do knotless braids 
+-- Customer wants to filter these stylists to only those available on a Saturday
+
+SELECT st.name
+FROM Stylists AS st
+JOIN Stylist_Services AS ss 
+ON st.stylist_id = ss.stylist_id
+JOIN Services AS se
+ON ss.service_id = se.service_id
+JOIN Availability a 
+ON st.stylist_id = a.stylist_id
+WHERE se.service_name LIKE '%knotless%braids%'; -- using LIKE in case customer doesn't search exactly how it's saved in db
+
+
+
 -- Customer has booked an appointment, receives booking details 
 -- i.e. "you have booked an appointment with stylist for date. this will cost price to be paid on the day"
 -- when she confirms, a new row is added to bookings table.
