@@ -4,7 +4,7 @@ USE HairstylistBooking;
 -- Customer wants to find stylists who do knotless braids 
 -- Customer wants to filter these stylists to only those available on a Saturday
 
-SELECT st.name
+SELECT st.name 
 FROM Stylists AS st
 JOIN Stylist_Services AS ss 
 ON st.stylist_id = ss.stylist_id
@@ -12,8 +12,8 @@ JOIN Services AS se
 ON ss.service_id = se.service_id
 JOIN Availability a 
 ON st.stylist_id = a.stylist_id
-WHERE se.service_name LIKE '%knotless%braids%'; -- using LIKE in case customer doesn't search exactly how it's saved in db
-
+WHERE se.service_name LIKE '%knotless%braids%' -- using LIKE in case customer doesn't search exactly how it's saved in db
+AND a.day_of_week = 'Saturday';
 
 
 -- Customer has booked an appointment, receives booking details 
