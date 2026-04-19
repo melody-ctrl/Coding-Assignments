@@ -69,10 +69,50 @@ CREATE TABLE Availability(
 ALTER TABLE Stylists
 DROP COLUMN location;
 
-
 -- Later realised I need to add appointment time as a column to be able to carry out a booking scenario
 ALTER TABLE Bookings 
 ADD appointment_time TIME;
 
 ALTER TABLE Bookings
 MODIFY booking_id INT AUTO_INCREMENT;
+
+
+-- Realised I forgot to auto increment tables (rookie mistake. i have to do better. this is such a drag)
+-- Can't auto increment customers due to foreign key. have to drop it first then re insert
+ALTER TABLE Bookings
+DROP FOREIGN KEY bookings_ibfk_2;
+
+-- add auto increment 
+ALTER TABLE Customers
+MODIFY customer_id INT AUTO_INCREMENT;
+
+-- add foreign key back
+ALTER TABLE Bookings
+ADD CONSTRAINT bookings_ibfk_2
+FOREIGN KEY (customer_id)
+REFERENCES Customers(customer_id);
+
+-- Same thing with stylist id.
+ALTER TABLE Stylist_Services
+DROP FOREIGN KEY stylist_services_ibfk_1;
+
+ALTER TABLE Bookings 
+DROP FOREIGN KEY bookings_ibfk_1;
+
+-- add auto increment
+ALTER TABLE Stylists
+MODIFY stylist_id INT AUTO_INCREMENT;
+
+-- add foreign keys back 
+ALTER TABLE Stylist_Services 
+ADD CONSTRAINT stylist_services_ibfk_1
+FOREIGN KEY (stylist_id)
+REFERENCES Stylists(stylist_id);
+
+ALTER TABLE Bookings 
+ADD CONSTRAINT bookings_ibfk_1
+FOREIGN KEY (stylist_id)
+REFERENCES Stylists(stylist_id);
+
+-- never again. I will learn to always remember autoincrement from the start.
+-- did all this because i felt like dropping the whole tables was overkill. 
