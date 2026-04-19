@@ -93,16 +93,60 @@ JOIN Stylists s
 WHERE booking_id = '9';
 
 
--- i.e. "you have booked an appointment with stylist for date. this will cost price to be paid on the day"
--- when she confirms, a new row is added to bookings table.
--- Customer wants to cancel appointment as they are no longer busy
--- Stylist wants to change prices of specific style because customers keep cancelling. 
+-- SCENARIO PART 7: 
+-- blackhairldn has just seen she's been booked by a celebrity! Ayra Starr!! 
+-- She decides to respect herself and will likely increase prices 
 
+CREATE PROCEDURE UpdateServicePrice(IN service_id INT, IN new_price DECIMAL(5,2))
+BEGIN
+	UPDATE Stylist_Services
+    SET price = new_price
+    WHERE id = service_id 
+END;
+
+-- SCENARIO PART 8:
+-- But first, she wants to compare her prices to whatever the highest price another stylist is charging for the same services
+
+SELECT se.service_name
+FROM Services se
+JOIN Stylist_services ss 
+  ON se.service_id = ss.service_id 
+JOIN Stylists s
+  ON s.stylist_id = ss.stylist_id
+WHERE s.name = 'blackhairldn';
+
+-- blackhairldn provides Hair extension and Knotless braids services 
+
+SELECT se.service_name, ss.price AS stylist_price,
+ (SELECT MAX(ss2.price)
+  FROM Stylist_Services ss2 -- second alias (ss2) in the subquery to reference the Stylist_Services table separate from main query
+  WHERE ss2.service_id = ss.service_id  -- only compare same services as the ones being compared for blackhairldn
+  ) AS highest_price
+FROM Stylist_Services ss
+JOIN Stylists s 
+  ON ss.stylist_id = s.stylist_id
+JOIN services se 
+  ON ss.service_id = se.service_id 
+WHERE s.name = 'blackhairldn' 
+  AND se.service_name IN ('Hair Extensions', 'Knotless braids')
+
+
+-- SCENARIO PART 9: 
+-- Based on this revelation, she will increase prices for both her services. 
+-- She now does celebrity hair. She deserves more
+  
+  
+
+
+-- SCENARIO PART 10: 
+-- Because she feels high and mighty, blackhairldn decides to cancel the booking she has with another customer on the same Saturday 
+-- She needs the whole day to prepare to do Ayra Starr's hair. Sorry to the other babe, whoever she is
+  
+  
+  
 -- Write in README: creating a scenario where customer books an appointment but realised I have no time slots in my data
 -- what time is the appointment? how do we know the stylist is available at that time? I only have their opening hours. how do we avoid double booking
 -- Need a time column in bookings table and maybe duration of service? 
 -- when customer books, use query to Find all booked times for a stylist on a given date & check if a time slot is already taken
-
--- change dates in bookings table to be in the future 
 
 
