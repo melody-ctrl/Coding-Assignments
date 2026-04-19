@@ -1,8 +1,18 @@
 USE HairstylistBooking;
 
 -- SCENARIO PART 1:
--- Customer named Ayra Starr wants to find stylists who do knotless braids and see their prices 
--- Ayra Starr wants to filter these stylists to only those available next Saturday
+-- Customer named Ayra Starr wants to do knotless braids 
+-- She first wants to see how many stylists provide this service
+SELECT se.service_name, COUNT(ss.stylist_id) AS total_stylists
+FROM Stylist_Services ss 
+JOIN Services se
+ON ss.service_id = se.service_id 
+WHERE se.service_name = 'Knotless braids'
+GROUP BY se.service_name
+
+-- SCENARIO PART 2:
+-- Ayra Starr wants to show the stylists who do knotless braids and their prices
+-- and filter these stylists to only those available next Saturday
 
 SELECT s.name, se.service_name, ss.price
 FROM Stylists s
@@ -16,7 +26,7 @@ WHERE se.service_name = 'Knotless braids'
   AND a.day_of_week = 'Saturday'
 ORDER BY ss.price ASC; -- show cheapest stylist first 
 
--- SCENARIO PART 2:
+-- SCENARIO PART 3:
 -- Ayra Starr is ready to book an appointment with blackhairldn because she's cheaper
 -- She now needs to know available times on Saturday
 -- Realised I'm missing some data in order to carry this out. need time of appointment column so stylists aren't double booked
@@ -32,13 +42,13 @@ WHERE s.name = 'blackhairldn'
 -- Customer can choose another time outside of it. I am very aware I am making assumptions and simplifying this to match my skillset.
 -- We will implement the assumption that each appointment is 1 hour long (stated in README)
 
--- SCENARIO PART 3:
+-- SCENARIO PART 4:
 -- Ayra Starr picks a time that is not in booked slot (2pm). Collect her info so she can book appt
 
 INSERT INTO Customers (first_name, last_name, email) VALUES -- no need for customer id field due to auto increment
 ('Ayra', 'Starr', 'ayrastarr@hotgirl.com');
 
--- SCENARIO PART 4: 
+-- SCENARIO PART 5: 
 -- Create a new booking for her. Using INSERT INTO SELECT query to save some time
 
 INSERT INTO Bookings (stylist_id, customer_id, service_id, date_booked, appointment_date, appointment_time)
@@ -58,7 +68,7 @@ WHERE s.name = 'blackhairldn'
   AND se.service_name = 'Knotless braids';
 
 
--- SCENARIO PART 5: 
+-- SCENARIO PART 6: 
 -- Create a booking confirmation message for Ayra Starr using concat 
 SELECT CONCAT(
   'You have a confirmed booking with ', 
