@@ -99,10 +99,12 @@ WHERE booking_id = '9';
 
 CREATE PROCEDURE UpdateServicePrice(IN service_id INT, IN new_price DECIMAL(5,2))
 BEGIN
-	UPDATE Stylist_Services
+	UPDATE Stylist_Services ss
     SET price = new_price
-    WHERE id = service_id 
+    WHERE stylist_id = service_id;
 END;
+
+DROP PROCEDURE IF EXISTS UpdateServicePrice;
 
 -- SCENARIO PART 8:
 -- But first, she wants to compare her prices to whatever the highest price another stylist is charging for the same services
@@ -117,7 +119,7 @@ WHERE s.name = 'blackhairldn';
 
 -- blackhairldn provides Hair extension and Knotless braids services 
 
-SELECT se.service_name, ss.price AS stylist_price,
+SELECT se.service_id, se.service_name, ss.price AS stylist_price,
  (SELECT MAX(ss2.price)
   FROM Stylist_Services ss2 -- second alias (ss2) in the subquery to reference the Stylist_Services table separate from main query
   WHERE ss2.service_id = ss.service_id  -- only compare same services as the ones being compared for blackhairldn
@@ -132,10 +134,11 @@ WHERE s.name = 'blackhairldn'
 
 
 -- SCENARIO PART 9: 
--- Based on this revelation, she will increase prices for both her services. 
+-- Based on this revelation, blackhairldn will increase prices for all her services. 
 -- She now does celebrity hair. She deserves more
   
-  
+CALL UpdateServicePrice(6, 160);
+CALL UpdateServicePrice(7, 90);
 
 
 -- SCENARIO PART 10: 
@@ -144,9 +147,4 @@ WHERE s.name = 'blackhairldn'
   
   
   
--- Write in README: creating a scenario where customer books an appointment but realised I have no time slots in my data
--- what time is the appointment? how do we know the stylist is available at that time? I only have their opening hours. how do we avoid double booking
--- Need a time column in bookings table and maybe duration of service? 
--- when customer books, use query to Find all booked times for a stylist on a given date & check if a time slot is already taken
-
 
