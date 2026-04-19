@@ -1,7 +1,7 @@
 -- Create hairstylist database
 
 -- CREATE DATABASE HairstylistBooking;
--- USE HairstylistBooking;
+USE HairstylistBooking;
 
 -- Create the tables
 
@@ -70,4 +70,9 @@ ALTER TABLE Stylists
 DROP COLUMN location;
 
 
+-- Later realised I need to add appointment time as a column to be able to carry out a booking scenario
+ALTER TABLE Bookings 
+ADD appointment_time TIME;
 
+ALTER TABLE Bookings
+MODIFY booking_id INT AUTO_INCREMENT;

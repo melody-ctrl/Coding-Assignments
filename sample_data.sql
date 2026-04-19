@@ -1,3 +1,7 @@
+-- POPULATING THE TABLES
+
+USE HairstylistBooking;
+
 -- Stylists
 INSERT INTO Stylists (stylist_id, name, email) VALUES
 (1, 'StyledbyOlivia', 'olivia.bennett@example.com'),
@@ -50,13 +54,16 @@ INSERT INTO Stylist_Services (stylist_id, service_id, price) VALUES
 -- AfroTamer
 (4, 7, 80.00),
 (4, 5, 85.00),
+(4, 4, 25.00),
 
 -- LacedbyReb
 (5, 6, 150.00),
+(5, 2, 80.00),
 (5, 8, 130.00),
 
 -- LaidnSlicked
 (6, 4, 30.00),
+(6, 2, 80.00),
 (6, 1, 28.00),
 
 -- blackhairldn
@@ -64,18 +71,20 @@ INSERT INTO Stylist_Services (stylist_id, service_id, price) VALUES
 (7, 6, 140.00),
 
 -- MoyinBraids
-(8, 7, 85.00);
+(8, 7, 80.00),
+(8, 1, 30.00);
+
 
 
 INSERT INTO Bookings (booking_id, stylist_id, customer_id, service_id, date_booked, appointment_date) VALUES
-(1, 1, 1, 1, '2026-04-01', '2026-04-05'),
-(2, 2, 2, 2, '2026-04-02', '2026-04-06'),
-(3, 3, 3, 3, '2026-04-03', '2026-04-07'),
-(4, 4, 4, 7, '2026-04-04', '2026-04-10'),
-(5, 5, 5, 6, '2026-04-05', '2026-04-12'),
-(6, 6, 6, 4, '2026-04-06', '2026-04-08'),
-(7, 7, 7, 7, '2026-04-07', '2026-04-14'),
-(8, 8, 8, 7, '2026-04-08', '2026-04-15');
+(1, 1, 1, 1, '2026-04-01', '2026-04-20'),
+(2, 2, 2, 2, '2026-04-02', '2026-04-21'),
+(3, 3, 3, 3, '2026-04-03', '2026-04-22'),
+(4, 4, 4, 7, '2026-04-04', '2026-04-23'),
+(5, 5, 5, 6, '2026-04-05', '2026-04-24'),
+(6, 6, 6, 4, '2026-04-06', '2026-04-25'),
+(7, 7, 7, 7, '2026-04-07', '2026-04-25'),
+(8, 8, 8, 7, '2026-04-08', '2026-04-26');
 
 
 
@@ -88,5 +97,18 @@ INSERT INTO Availability (availability_id, stylist_id, day_of_week, start_time, 
 (6, 6, 'Saturday', '08:00:00', '14:00:00'),
 (7, 7, 'Saturday', '10:00:00', '15:00:00'),
 (8, 8, 'Saturday', '09:00:00', '17:00:00'),
-(9, 4, 'Sunday', '11:00:00', '18:00:00')
+(9, 4, 'Sunday', '11:00:00', '18:00:00');
+
+
+
+-- Later realised I need to add appointment time as a column to be able to carry out a booking scenario
+-- This was a chore. Next time I think I would just delete the table and re-create it.
+UPDATE Bookings SET appointment_time = '12:00:00' WHERE booking_id = 1;
+UPDATE Bookings SET appointment_time = '10:00:00' WHERE booking_id = 2;
+UPDATE Bookings SET appointment_time = '15:00:00' WHERE booking_id = 3;
+UPDATE Bookings SET appointment_time = '16:00:00' WHERE booking_id = 4;
+UPDATE Bookings SET appointment_time = '09:00:00' WHERE booking_id = 5;
+UPDATE Bookings SET appointment_time = '10:00:00' WHERE booking_id = 6;
+UPDATE Bookings SET appointment_time = '12:00:00' WHERE booking_id = 7;
+UPDATE Bookings SET appointment_time = '15:00:00' WHERE booking_id = 8;
 

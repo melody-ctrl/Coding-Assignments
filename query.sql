@@ -17,7 +17,11 @@ AND a.day_of_week = 'Saturday'
 ORDER BY ss.price ASC; -- show cheapest stylist first 
 
 
--- Customer has booked an appointment, receives booking details 
+-- Customer wants to book an appointment 
+-- Realised I'm missing some data in order to carry this out. need time of appointment so stylists aren't double booked
+
+
+
 -- i.e. "you have booked an appointment with stylist for date. this will cost price to be paid on the day"
 -- when she confirms, a new row is added to bookings table.
 -- Customer wants to cancel appointment as they are no longer busy
