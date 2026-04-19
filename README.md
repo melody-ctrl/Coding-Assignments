@@ -69,3 +69,25 @@ This project will be called: “Which Studio Ghibli Movie Should You Watch?”. 
 This project will be called "The Hairstylist Booking platform". It is an SQL database that can be used for a booking page where customers book hair services with a local stylist. It includes tables for stylists, customers, services, and bookings, and shows how they are connected. 
 
 This scenario is for a centralised booking platform for black hairstylists in particular. Currently, many present their businesses informally on social media platforms, making it difficult for a customer to search and filter for stylists based on important things like price, location, and services offered. A centralised page and database with all this information would help to solve this problem. 
+
+### Breakdown 
+
+* Find stylists offering a specific service
+* Let a customer filter stylists by availability
+* Create a new booking and show a booking confirmation message
+* Price comparisons with other stylists from a stylist's pov
+* Update prices of services a stylist provides 
+* Delete bookings a stylist can no longer make
+
+### Software used
+
+- MySQL
+- SQL client : DBeaver 
+
+### Assumptions 
+
+This scenario was very simplified to match my skill set. In reality there are certain extra features that would be needed for it to run smoothly. For example, duration times for appointment slots depending on the service being provided. For simplicity, I made the assumption that every appointment is 1 hour long. 
+
+### Future Improvements
+
+I hope to increase my skills and be able to return to flesh out this project into something that can realistically be used for a hair booking app for black girls. 

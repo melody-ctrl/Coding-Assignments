@@ -40,7 +40,7 @@ WHERE s.name = 'blackhairldn'
 
 -- For simplicity: Available times are determined by showing stylist's booked times for a certain date
 -- Customer can choose another time outside of it. I am very aware I am making assumptions and simplifying this to match my skillset.
--- We will implement the assumption that each appointment is 1 hour long (stated in README)
+-- We will implement the assumption that each appointment is 1 hour long
 
 -- SCENARIO PART 4:
 -- Ayra Starr picks a time that is not in booked slot (2pm). Collect her info so she can book appt
@@ -144,7 +144,26 @@ CALL UpdateServicePrice(7, 90);
 -- SCENARIO PART 10: 
 -- Because she feels high and mighty, blackhairldn decides to cancel the booking she has with another customer on the same Saturday 
 -- She needs the whole day to prepare to do Ayra Starr's hair. Sorry to the other babe, whoever she is
-  
-  
-  
 
+-- show her bookings for saturday
+SELECT 
+    b.booking_id,
+    c.first_name,
+    c.last_name,
+    se.service_name,
+    b.appointment_date,
+    b.appointment_time
+FROM Bookings AS b 
+JOIN Stylists s 
+  ON b.stylist_id = s.stylist_id
+JOIN Customers c 
+  ON b.customer_id = c.customer_id
+JOIN Services se 
+  ON b.service_id = se.service_id
+WHERE s.name = 'blackhairldn'
+  AND b.appointment_date = '2026-04-25';
+  
+-- Lily Richardson, you've got to go!
+
+DELETE FROM Bookings
+WHERE booking_id = 7;
