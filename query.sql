@@ -58,6 +58,30 @@ WHERE s.name = 'blackhairldn'
   AND se.service_name = 'Knotless braids';
 
 
+-- SCENARIO PART 5: 
+-- Create a booking confirmation message for Ayra Starr using concat 
+SELECT CONCAT(
+  'You have a confirmed booking with ', 
+  s.name, 
+  ' for ',
+  se.service_name,
+  ' on ',
+  b.appointment_date, 
+  ' at ',
+  b.appointment_time,
+  ' at the cost of £',
+  ss.price
+) AS booking_confirmation
+FROM Bookings b 
+JOIN Stylist_Services ss
+  ON b.stylist_id = ss.stylist_id  
+  JOIN Services se 
+  ON se.service_id = b.service_id 
+JOIN Stylists s
+  ON s.stylist_id = b.stylist_id
+  AND ss.service_id = b.service_id  -- prevents duplicates as stylist can have many services and service can have many stylists
+WHERE booking_id = '9';
+
 
 -- i.e. "you have booked an appointment with stylist for date. this will cost price to be paid on the day"
 -- when she confirms, a new row is added to bookings table.
