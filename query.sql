@@ -104,8 +104,6 @@ BEGIN
     WHERE stylist_id = service_id;
 END;
 
-DROP PROCEDURE IF EXISTS UpdateServicePrice;
-
 -- SCENARIO PART 8:
 -- But first, she wants to compare her prices to whatever the highest price another stylist is charging for the same services
 
