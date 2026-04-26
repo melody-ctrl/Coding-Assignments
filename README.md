@@ -62,7 +62,7 @@ This project will be called: “Which Studio Ghibli Movie Should You Watch?”. 
 * Consider how this could be done on a larger scale. Had to slice from 22 total movies to 12 to be more time efficient. What if there were 100 movies?
 
 
-# Assignment 3 - Data and MYSQL 
+# Assignment 3 - Data and MySQL 
 
 ## Project Overview
 
