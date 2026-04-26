@@ -1,1 +1,5 @@
 #ignore this !
+.metadata/
+.venv/
+General/
+tempCodeRunnerFile
