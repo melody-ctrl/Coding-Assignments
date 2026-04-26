@@ -1,1 +1,4 @@
 #ignore this !
+.metadata/
+.venv/
+General/
