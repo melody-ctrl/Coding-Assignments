@@ -6,8 +6,31 @@ app = Flask(__name__)
 @app.route("/trips", methods=["POST"])
 def create_trip_route():
     print("Creating new trip...")
-    data = request.get_json()
+    try:
+        # JSON data sent from client (main.py)
+        data = request.get_json()
 
-    result, status = create_trip(data)
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
 
-    return jsonify(result), status
+        required_fields = ["destination", "start_date", "end_date", "budget"] #"booked" field not required as is already default
+
+        # loop through required fields and check they're not empty 
+        for field in required_fields:
+            if not data.get(field):
+                return jsonify({
+                    "status": "error",
+                    "message": f"Missing field: {field}"
+                }), 400
+            
+        # call db_utils function to insert the trip
+        result, status = create_trip(data)
+        
+        # send response back to client
+        return jsonify(result), status
+    
+    except Exception as e:
+        return jsonify({
+            "error": "Invalid request",
+            "details": str(e)
+        }), 400
