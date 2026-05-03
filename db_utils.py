@@ -61,4 +61,39 @@ def get_all_trips():
         return {"error": str(e)}
 
 
-# Update a trip status (POST)
+# Update a trip (PUT)
+def update_trip(trip_id, data):
+    try:
+        with get_connection() as db:
+            cursor = db.cursor()
+
+            query = """
+            UPDATE trips
+            SET destination = %s,
+                start_date = %s,
+                end_date = %s,
+                budget = %s,
+                booked = %s
+            WHERE trip_id = %s
+            """
+
+            values = (
+                data.get("destination"),
+                data.get("start_date"),
+                data.get("end_date"),
+                data.get("budget"),
+                data.get("booked", True),
+                trip_id
+            )
+
+            cursor.execute(query, values)
+            db.commit()
+
+            # check if anything was updated 
+            if cursor.rowcount == 0:
+                return {"error": "Trip not found"}, 404
+
+            return {"message": "Trip updated"}, 200
+
+    except Exception as e:
+        return {"error": str(e)}, 500
