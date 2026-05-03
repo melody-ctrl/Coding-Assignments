@@ -46,21 +46,19 @@ def create_trip(data):
         return {"Error": str(e)}, 500
 
 
-
 # Show all trips (GET)
+def get_all_trips():
+    try:
+        with get_connection() as db:
+            cursor = db.cursor(dictionary=True)
 
-# def get_all_trips():
-#     try:
-#         with get_connection() as db:
-#             cursor = db.cursor(dictionary=True)
+            cursor.execute("SELECT * FROM trips")
+            results = cursor.fetchall() # used when call brings multiple lines 
 
-#             cursor.execute("SELECT * FROM trips")
-#             results = cursor.fetchall() # used when call brings multiple lines 
+            return results
 
-#             return results
-
-#     except Exception as e:
-#         return {"error": str(e)}
+    except Exception as e:
+        return {"error": str(e)}
 
 
 # Update a trip status (POST)
