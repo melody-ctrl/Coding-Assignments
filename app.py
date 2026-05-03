@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from db_utils import (create_trip, get_all_trips)
+from db_utils import (create_trip, get_all_trips, update_trip)
 
 app = Flask(__name__)
 
@@ -40,11 +40,43 @@ def create_trip_route():
 @app.route("/trips", methods=["GET"]) # although it's default, writing to be clear
 def get_trips_route():
     print("Retrieving all logged trips")
-    
+
     result = get_all_trips()
     return jsonify(result)
 
 
+# Update a trip completely 
+@app.route("/trips/<int:trip_id>", methods=["PUT"])
+def update_trip_route(trip_id):
+    print(f"Updating trip with ID: {trip_id}")
 
+    try:
+        data = request.get_json()
+
+        # check request body exists
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+
+        # required fields for full update (every field changed)
+        required_fields = ["destination", "start_date", "end_date", "budget"]
+
+        # validate all fields exist
+        for field in required_fields:
+            if field not in data:
+                return jsonify({
+                    "error": f"Missing field: {field}"
+                }), 400
+
+        # call database function
+        result, status = update_trip(trip_id, data)
+
+        return jsonify(result), status
+
+    except Exception as e:
+        return jsonify({
+            "error": "Invalid request",
+            "details": str(e)
+        }), 400
+    
 if __name__ == "__main__":
     app.run()
