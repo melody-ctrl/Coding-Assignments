@@ -96,3 +96,7 @@ I hope to increase my skills and be able to return to flesh out this project int
 # Assignment 4 - Creating APIs in Python
 
 This project will be called "Travel tracker", a simple API implemented in Python. 
+
+### Dependencies 
+- mysql-connector-python (connects python to mysql database)
+- requests (makes a GET request)
