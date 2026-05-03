@@ -1,8 +1,9 @@
 from flask import Flask, request, jsonify
-from db_utils import create_trip
+from db_utils import (create_trip, get_all_trips)
 
 app = Flask(__name__)
 
+# Create a trip
 @app.route("/trips", methods=["POST"])
 def create_trip_route():
     print("Creating new trip...")
@@ -35,6 +36,15 @@ def create_trip_route():
             "details": str(e)
         }), 400
     
+# Retrieve all trips 
+@app.route("/trips", methods=["GET"]) # although it's default, writing to be clear
+def get_trips_route():
+    print("Retrieving all logged trips")
+    
+    result = get_all_trips()
+    return jsonify(result)
+
+
 
 if __name__ == "__main__":
     app.run()
