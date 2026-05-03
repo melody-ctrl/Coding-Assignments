@@ -11,3 +11,6 @@ CREATE TABLE IF NOT EXISTS trips (
     status VARCHAR(50) DEFAULT 'planned'
 );
 
+ALTER TABLE trips 
+DROP COLUMN status,
+ADD COLUMN booked BOOLEAN;
