@@ -34,7 +34,7 @@ def create_trip():
 
 
 # GET
-def get_all_books():
+def get_all_trips():
     print("Hello, welcome back to your travel tracker. Retrieving all your trips...")
     try:
         response = requests.get(f"{URL}/trips")
@@ -49,3 +49,28 @@ def get_all_books():
 
 
 # PUT
+def update_trip(trip_id):
+    print("Hello, updating your trip...")
+
+    new_data = {
+        "destination": "Sweden",
+        "start_date": "2026-10-11",
+        "end_date": "2026-10-18",
+        "budget": 600,
+        "booked": True
+    }
+
+    try:
+        response = requests.put(f"{URL}/trips/{trip_id}", json = new_data)
+        print(response.status_code)
+
+
+        if response.status_code == 200:
+            print("Trip updated successfully!")
+            print(response.json())
+        else:
+            print("There was an error updating this trip.")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+

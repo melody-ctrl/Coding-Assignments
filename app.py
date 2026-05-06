@@ -14,7 +14,7 @@ def create_trip_route():
         if not data:
             return jsonify({"error": "No data provided"}), 400
 
-        required_fields = ["destination", "start_date", "end_date", "budget"] #"booked" field not required as is already default
+        required_fields = ["destination", "start_date", "end_date", "budget", "booked"] #"booked" field not required as is already default
 
         # loop through required fields and check they're not empty 
         for field in required_fields:
@@ -35,6 +35,7 @@ def create_trip_route():
             "error": "Invalid request",
             "details": str(e)
         }), 400
+    
     
 # Retrieve all trips 
 @app.route("/trips", methods=["GET"]) # although it's default, writing to be clear
@@ -58,7 +59,7 @@ def update_trip_route(trip_id):
             return jsonify({"error": "No data provided"}), 400
 
         # required fields for full update (every field changed)
-        required_fields = ["destination", "start_date", "end_date", "budget"]
+        required_fields = ["destination", "start_date", "end_date", "budget", "booked"]
 
         # validate all fields exist
         for field in required_fields:
