@@ -74,3 +74,7 @@ def update_trip(trip_id):
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
 
+if __name__ == "__main__":
+    create_trip()
+    get_all_trips()
+    update_trip(1)
