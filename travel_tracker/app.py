@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from db_utils import (create_trip, get_all_trips, update_trip)
+from travel_tracker.db_utils(create_trip, get_all_trips, update_trip)
 
 app = Flask(__name__)
 
