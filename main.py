@@ -9,10 +9,11 @@ def create_trip():
     print("Hello, welcome back to your travel tracker. Let's track a new trip...")
         
     new_trip = {
-        "destination": "Albania",
-        "start_date": "2026-07-02",
-        "end_date": "2026-07-08",
-        "budget": 450
+        "destination": "Tanzania",
+        "start_date": "2026-09-07",
+        "end_date": "2026-09-27",
+        "budget": 2000,
+        "booked": True
         }
 
     try:  
@@ -28,8 +29,23 @@ def create_trip():
         else: 
             print("There was an error creating your trip. Please try again.")
     
-    except Exception as e: # for crashes, before rest of above code can even run 
-        print("Request failed:", e)
+    except requests.exceptions.RequestException as e: # for crashes, before rest of above code can even run 
+        print(f"Request failed: {e}")
 
 
+# GET
+def get_all_books():
+    print("Hello, welcome back to your travel tracker. Retrieving all your trips...")
+    try:
+        response = requests.get(f"{URL}/trips")
+        print(response.status_code)
 
+        data = response.json()
+
+        print("Here are your trips: ", data)
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+
+
+# PUT
