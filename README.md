@@ -91,3 +91,34 @@ This scenario was very simplified to match my skill set. In reality there are ce
 ### Future Improvements
 
 I hope to increase my skills and be able to return to flesh out this project into something that can realistically be used for a hair booking app for black girls. 
+
+
+# Assignment 4 - Creating APIs in Python
+
+This project will be called "Travel tracker API", a simple flask API implemented in Python and connected to a MYSQL database.
+This scenario shows a tracking platform where a user wants to keep track of their travel plans. The platform will allow them to:
+- Create new trips (POST request)
+- View all trips (GET request)
+- Update existing trips (PUT request)
+
+### Dependencies 
+
+- mysql-connector-python (connects python to mysql database)
+- requests (makes a GET request)
+- flask (to run our routes)
+
+### How to run this API
+
+1. Install the modules listed in Dependencies 
+2. Configure your own config file using config_template.py. Ensure to leave the database parameter as "travel_tracker". Change everything else to your credentials.
+3. Run the flask app on the app.py file. You should see something like: "running on http://127.0.0.1:5000"
+4. In a separate terminal, run the client side through main.py file. You should see:
+- Status codes (200, 201)
+- JSON responses
+- Confirmation messages
+
+### Future improvements
+
+- Retrieve trips again after PUT request for further confirmation of update. Just did not have enough time.
+- Add DELETE endpoint to remove trips
+- Add validation for dates and inputs
